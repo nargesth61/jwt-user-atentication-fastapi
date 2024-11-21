@@ -9,6 +9,7 @@ A complete solution for managing users and their features using **FastAPI**, **S
 - **JWT Authentication**: Secure user authentication using JSON Web Tokens (JWT).
 - **User Management**: User registration, login, email verification (OTP), profile updates, and avatar management.
 - **Image Storage**: Secure upload and storage of user images in an S3-compatible cloud storage service.
+- **Celery worker**: Send email to user with celery .
 - **Docker Support**: Easily launch the project using Docker.
 - **Database Migrations**: Use **Alembic** to manage and apply database changes.
 - **Easy Deployment**: Deploy your project on **Liara** for hassle-free cloud hosting and scaling.
