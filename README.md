@@ -1,6 +1,6 @@
 # 🌐 **FastAPI Authentication Project**
 
-A complete solution for managing users and their features using **FastAPI**, **SQLAlchemy**, **Alembic**, **JWT Authentication**, **PostgreSQL**, and cloud storage for images (S3-Compatible). This project is designed for easy deployment on **Liara** for automated operations.
+A complete solution for managing users and their features using **FastAPI**, **SQLAlchemy**, **Alembic**, **JWT Authentication**, **PostgreSQL**, and cloud storage for images (S3-Compatible). This project is designed for easy deployment image on **Liara** for automated operations.
 
 ---
 
@@ -12,7 +12,7 @@ A complete solution for managing users and their features using **FastAPI**, **S
 - **Celery worker**: Send email to user with celery .
 - **Docker Support**: Easily launch the project using Docker.
 - **Database Migrations**: Use **Alembic** to manage and apply database changes.
-- **Easy Deployment**: Deploy your project on **Liara** for hassle-free cloud hosting and scaling.
+scaling.
 
 ---
 
