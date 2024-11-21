@@ -10,3 +10,5 @@ python-jose
 alembic
 passlib
 bcrypt
+boto3
+python-multipart 

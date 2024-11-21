@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import Optional
 
 class UserBase(BaseModel):
@@ -32,3 +32,6 @@ class UserLogin(BaseModel):
 
     class Config:
         orm_mode = True
+
+class UserEmail(BaseModel):
+    email: EmailStr

@@ -16,7 +16,8 @@ class User(Base):
     otp_expiration = Column(DateTime, index=True)
 
     profile = relationship("Profile", back_populates="user", uselist=False)
-
+    profile_image = relationship("UserProfileImage", back_populates="user", uselist=False)
+    
 class BlacklistedToken(Base):
     __tablename__ = "blacklisted_tokens"
     

@@ -38,6 +38,25 @@ def verify_otp_route(
     
     return {"message": result["message"]}
 
+@router.post("/resend-otp")
+def resend_verification_code(user_email: schemas.UserEmail, db: Session = Depends(get_db)):
+    
+    db_user = db.query(User).filter(User.email == user_email.email).first()
+    if not db_user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    
+    if db_user.is_verified:
+        raise HTTPException(status_code=400, detail="User is already verified")
+    
+    
+    new_otp_code =crud_user.create_otp_code()
+    db_user.otp_code = new_otp_code
+    db.commit()
+    
+    send_email_task.delay(db_user.email, new_otp_code)
+    return {"message": "A new verification code has been sent to your email."}
+
 @router.post("/login")
 def login_user(user: schemas.UserLogin, db: Session = Depends(get_db)):
     db_user = crud_user.get_user_by_email(db, email=user.email)
@@ -53,11 +72,9 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 @router.post("/logout")
 def logout(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
-    # بررسی اینکه آیا توکن قبلاً در لیست سیاه قرار دارد
     if crud_user.is_token_blacklisted(db, token):
         raise HTTPException(status_code=401, detail="Token has already been logged out")
 
-    # توکن را به لیست سیاه اضافه می‌کنیم
     crud_user.add_token_to_blacklist(db, token)
 
     return {"message": "Successfully logged out"}

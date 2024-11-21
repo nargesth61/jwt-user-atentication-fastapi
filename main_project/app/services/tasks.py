@@ -24,7 +24,7 @@ mail_config = ConnectionConfig(
 def send_email_task(email: str, otp_code: str):
     fm = FastMail(mail_config)
     message = MessageSchema(
-        subject="تأیید ایمیل",
+        subject="vrify your email",
         recipients=[email],
         body=f"Your OTP code is: {otp_code}",
         subtype="html"

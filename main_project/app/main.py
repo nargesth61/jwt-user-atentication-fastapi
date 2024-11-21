@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routes import auth,profile
+from app.routes import auth,profile,avatar
 
 # Create FastAPI
 app = FastAPI(
@@ -10,4 +10,4 @@ app = FastAPI(
 
 app.include_router(auth.router, prefix="/user", tags=["auth"])
 app.include_router(profile.router, prefix="/profile", tags=["profile"])
-
+app.include_router(avatar.router, prefix="/avatar", tags=["avatar"])
