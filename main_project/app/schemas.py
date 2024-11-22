@@ -2,7 +2,7 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional
 
 class UserBase(BaseModel):
-    email: str
+    email: EmailStr
 
 class UserCreate(UserBase):
     hashed_password: str
@@ -27,7 +27,7 @@ class Profile(BaseModel):
         orm_mode = True
     
 class UserLogin(BaseModel):
-    email: str
+    email: EmailStr
     password: str
 
     class Config:
